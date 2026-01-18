@@ -7,9 +7,9 @@ from pyrogram import filters
 load_dotenv()
 
 
-API_ID = int(getenv("API_ID", ""))
+API_ID = int(getenv("API_ID", "35279715"))
 
-API_HASH = getenv("API_HASH", "")
+API_HASH = getenv("API_HASH", "b4c339216397b5941d88c8617d2dc12b")
 
 BOT_TOKEN = getenv("BOT_TOKEN", "")
 
@@ -21,9 +21,9 @@ SONG_DOWNLOAD_DURATION = int(
     getenv("SONG_DOWNLOAD_DURATION_LIMIT", "54000")
 )
 
-LOGGER_ID = int(getenv("LOGGER_ID", "-1002748340748"))
+LOGGER_ID = int(getenv("LOGGER_ID", "-1003228624224"))
 
-OWNER_ID = int(getenv("OWNER_ID", "8250510325"))
+OWNER_ID = int(getenv("OWNER_ID", "7651303468"))
 
 BOT_USERNAME = getenv("BOT_USERNAME" , "gojo_x_jinwoo_bot")
 
@@ -42,16 +42,16 @@ GIT_TOKEN = getenv(
     "GIT_TOKEN", ""
 )  # Fill this variable if your upstream repository is private
 
-SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/dark_x_knight_musiczz_support")
-SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/+zyocLmf3JvIwOWY9")
+SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/dark_musictm")
+SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/snowy_hometown")
 
 AUTO_LEAVING_ASSISTANT = bool(getenv("AUTO_LEAVING_ASSISTANT", False))
 AUTO_SUGGESTION_MODE = getenv("AUTO_SUGGESTION_MODE", "True")
 AUTO_SUGGESTION_TIME = int(
     getenv("AUTO_SUGGESTION_TIME", "500"))
 
-SPOTIFY_CLIENT_ID = getenv("SPOTIFY_CLIENT_ID", None)
-SPOTIFY_CLIENT_SECRET = getenv("SPOTIFY_CLIENT_SECRET", None)
+SPOTIFY_CLIENT_ID = getenv("SPOTIFY_CLIENT_ID", "6fb7e1766693439b86ec57e3deb3c36f")
+SPOTIFY_CLIENT_SECRET = getenv("SPOTIFY_CLIENT_SECRET", "da3f94c6a68d49f6b64a7216ec9eb905")
 
 
 
