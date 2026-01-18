@@ -37,7 +37,7 @@ def queue_markup(
                 text=_["QU_B_1"],
                 callback_data=f"GetQueued {CPLAY}|{videoid}",
             ),
-
+        ]
         [
             InlineKeyboardButton("📥ᴘʀᴏᴍᴏ📥", url="https://t.me/snowy_hometown"),
             InlineKeyboardButton("💗ɢʀᴏᴜᴘ ᴄʜᴀᴛ💗", url="https://t.me/destiny_infinity_og"),
