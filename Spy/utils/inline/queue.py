@@ -30,6 +30,7 @@ def queue_markup(
                 text=_["QU_B_2"].format(played, dur),
                 callback_data="GetTimer",
             )
+        ]
         ],
         [
             InlineKeyboardButton(
