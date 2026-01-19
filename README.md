@@ -46,7 +46,7 @@ Press the below button to Fast deploy on Heroku/Raiwlay
 Either you could locally host or deploy on [Heroku](https://heroku.com)
 ### 💜 Heroku
 
-[![Deploy](https://www.heroku.com/deploy?template=https://github.com/askimyavas7-tech/SpyMusicxgojo)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy?template=https://github.com/askimyavas7-tech/SpyMusicxgojo)
 
 <br>
 
