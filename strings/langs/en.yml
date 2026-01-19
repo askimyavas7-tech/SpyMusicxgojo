@@ -1,5 +1,7 @@
 # en.yml
 
+name: "English"
+
 # ===== GENERAL =====
 general_1: "» Please reply to a user or provide a valid username/user_id."
 general_2: "» Invalid command usage. Use /help for correct format."
