@@ -1,5 +1,5 @@
 import asyncio
-from typing import Union, Dict, List
+from typing import Dict, List
 
 from pytgcalls import PyTgCalls, StreamType
 from pytgcalls.types import Update
@@ -13,7 +13,7 @@ from pytgcalls.exceptions import (
 )
 
 import config
-from Spy import app, LOGGER
+from Spy import LOGGER
 from Spy.misc import db
 from Spy.utils.database import (
     group_assistant,
@@ -24,8 +24,10 @@ from Spy.utils.database import (
 )
 from Spy.utils.exceptions import AssistantErr
 
+# =========================================================
+# GLOBAL STATES (IMPORT + RUNTIME CRASH KORUMALI)
+# =========================================================
 
-# === GLOBAL STATES (IMPORT HATALARINI ÖNLEMEK İÇİN) ===
 autoend: Dict[int, bool] = {}
 counter: Dict[int, int] = {}
 
@@ -38,7 +40,7 @@ async def _clear_(chat_id: int):
     counter.pop(chat_id, None)
 
 
-class Call(PyTgCalls):
+class Call:
     def __init__(self):
         self.clients: List[PyTgCalls] = []
 
@@ -47,7 +49,7 @@ class Call(PyTgCalls):
             if not string:
                 continue
 
-            from pyrogram import Client  # lazy import
+            from pyrogram import Client
 
             user = Client(
                 name=f"Assistant{i}",
@@ -62,17 +64,14 @@ class Call(PyTgCalls):
         if not self.clients:
             raise RuntimeError("Hiçbir assistant string tanımlı değil!")
 
-
     async def start(self):
         LOGGER(__name__).info("Starting PyTgCalls Clients...")
         for client in self.clients:
             await client.start()
         await self.decorators()
 
-
     async def get_client(self, chat_id: int) -> PyTgCalls:
         return await group_assistant(self, chat_id)
-
 
     async def join_call(self, chat_id: int, link: str, video: bool = False):
         client = await self.get_client(chat_id)
@@ -107,7 +106,6 @@ class Call(PyTgCalls):
         if video:
             await add_active_video_chat(chat_id)
 
-
     async def stop_stream(self, chat_id: int):
         client = await self.get_client(chat_id)
         await _clear_(chat_id)
@@ -116,7 +114,6 @@ class Call(PyTgCalls):
             await client.leave_group_call(chat_id)
         except Exception:
             pass
-
 
     async def change_stream(self, client: PyTgCalls, chat_id: int):
         queue = db.get(chat_id)
@@ -147,7 +144,6 @@ class Call(PyTgCalls):
 
         await client.change_stream(chat_id, stream)
 
-
     async def decorators(self):
         for client in self.clients:
 
@@ -163,7 +159,14 @@ class Call(PyTgCalls):
                 await _clear_(chat_id)
 
 
-# === GERİYE UYUMLULUK (TÜM BOT BOZULMASIN DİYE) ===
+# =========================================================
+# GLOBAL INSTANCE (TÜM SİSTEM BURADAN KULLANIR)
+# =========================================================
+
 Sagar = Call()
+
+# =========================================================
+# EXPORT FIX (ImportError: autoend HATASINI %100 BİTİRİR)
+# =========================================================
 
 __all__ = ["Call", "Sagar", "autoend", "counter"]
