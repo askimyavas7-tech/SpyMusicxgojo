@@ -1,88 +1,110 @@
-name: "🇺🇸 English"
+# english.py
 
-general_1: "» Please reply to a user or provide a valid username/user_id."
-general_2: "» Invalid command usage. Use /help for correct format."
-general_3: "» Bot is restarting, please wait..."
-general_4: "» Something went wrong. Try again later."
+# ================= LANGUAGE: ENGLISH ================= #
 
-ping_1: "» Pong! Bot is alive and running."
+_ = dict()
 
-admin_1: "» You must be an admin to use this command."
-admin_2: "» I need admin rights to work properly."
+# ===== GENERAL =====
+_["general_1"] = "» Please reply to a user or provide a valid username/user_id."
+_["general_2"] = "» Invalid command usage. Use /help for correct format."
+_["general_3"] = "» Bot is restarting, please wait..."
+_["general_4"] = "» Something went wrong. Try again later."
+_["general_5"] = "» You are not authorized to use this command."  # EKLENDİ
 
-play_1: "» Searching for your song..."
-play_2: "» Processing your request..."
-play_3: "» Now playing."
-play_4: "» Added to queue."
-play_5: "» Live stream detected."
+# ===== PING =====
+_["ping_1"] = "» Pong! Bot is alive and running."
 
-pause_1: "» Playback paused."
-resume_1: "» Playback resumed."
-stop_1: "» Music stopped and queue cleared."
-skip_1: "» Skipped to next track."
+# ===== ADMIN =====
+_["admin_1"] = "» You must be an admin to use this command."
+_["admin_2"] = "» I need admin rights to work properly."
 
-queue_1: "» Queue is empty."
-queue_2: "» Current Music Queue:"
+# ===== PLAY =====
+_["play_1"] = "» Searching for your song..."
+_["play_2"] = "» Processing your request..."
+_["play_3"] = "» Now playing."
+_["play_4"] = "» Added to queue."
+_["play_5"] = "» Live stream detected."
 
-start_1: "🎵 Welcome to HEPSİ BURADA MÜZİK BOTU!"
-start_2: "👋 Hello {0}, welcome to {1}"
+# ===== PAUSE / RESUME / STOP / SKIP =====
+_["pause_1"] = "» Playback paused."
+_["resume_1"] = "» Playback resumed."
+_["stop_1"] = "» Music stopped and queue cleared."
+_["skip_1"] = "» Skipped to next track."
 
-help_1: "🎧 HEPSİ BURADA MÜZİK BOTU Commands"
+# ===== QUEUE =====
+_["queue_1"] = "» Queue is empty."
+_["queue_2"] = "» Current Music Queue:"
 
-about_1: "HEPSİ BURADA MÜZİK BOTU is a powerful Telegram voice chat music bot."
+# ===== START / HELP / ABOUT =====
+_["start_1"] = "🎵 Welcome to HEPSİ BURADA MÜZİK BOTU!"
+_["start_2"] = "👋 Hello {0}, welcome to {1}"
+_["help_1"] = "🎧 HEPSİ BURADA MÜZİK BOTU Commands"
+_["about_1"] = "HEPSİ BURADA MÜZİK BOTU is a powerful Telegram voice chat music bot."
 
 # ===== START BUTTONS =====
-S_B_1: "➕ Add to Group"
-S_B_2: "💬 Support"
-S_B_3: "➕ Add Me"
-S_B_4: "⚙ Settings"
-S_B_5: "📜 Commands"
-S_B_6: "📊 Stats"
-S_B_7: "🌐 Source"
-S_B_8: "🔙 Back"
-S_B_9: "💬 Support Chat"
+_["S_B_1"] = "➕ Add to Group"
+_["S_B_2"] = "💬 Support"
+_["S_B_3"] = "➕ Add Me"
+_["S_B_4"] = "⚙ Settings"
+_["S_B_5"] = "📜 Commands"
+_["S_B_6"] = "📊 Stats"
+_["S_B_7"] = "🌐 Source"
+_["S_B_8"] = "🔙 Back"
+_["S_B_9"] = "💬 Support Chat"
 
 # ===== HELP BUTTONS =====
-H_B_1: "🎵 Music"
-H_B_2: "🛠 Admin"
-H_B_3: "⚙ Settings"
-H_B_4: "📊 Stats"
-H_B_5: "👥 Group"
-H_B_6: "👤 User"
-H_B_7: "🤖 Bot"
-H_B_8: "🔙 Back"
+_["H_B_1"] = "🎵 Music"
+_["H_B_2"] = "🛠 Admin"
+_["H_B_3"] = "⚙ Settings"
+_["H_B_4"] = "📊 Stats"
+_["H_B_5"] = "👥 Group"
+_["H_B_6"] = "👤 User"
+_["H_B_7"] = "🤖 Bot"
+_["H_B_8"] = "🔙 Back"
+_["H_B_9"] = "📌 Extra"   # EKLENDİ
+
+# H_B_10 ~ H_B_16 (second page)
+_["H_B_10"] = "🎶 Playlist"
+_["H_B_11"] = "📄 Queue Info"
+_["H_B_12"] = "⏸ Pause/Resume"
+_["H_B_13"] = "⏭ Skip Track"
+_["H_B_14"] = "⏹ Stop Music"
+_["H_B_15"] = "🔁 Loop"
+_["H_B_16"] = "📊 Stats"
 
 # ===== PLAYLIST BUTTONS =====
-PL_B_1: "⏯ Pause"
-PL_B_2: "▶ Resume"
-PL_B_3: "⏭ Skip"
-PL_B_4: "⏹ Stop"
-PL_B_5: "🔁 Loop"
-PL_B_6: "📄 Queue"
+_["PL_B_1"] = "⏯ Pause"
+_["PL_B_2"] = "▶ Resume"
+_["PL_B_3"] = "⏭ Skip"
+_["PL_B_4"] = "⏹ Stop"
+_["PL_B_5"] = "🔁 Loop"
+_["PL_B_6"] = "📄 Queue"
 
 # ===== SETTINGS BUTTONS =====
-ST_B_1: "🎛 Player Mode"
-ST_B_2: "🗑 Clean Mode"
-ST_B_3: "👥 Auth Users"
-ST_B_4: "🌐 Language"
-ST_B_5: "🔙 Back"
+_["ST_B_1"] = "🎛 Player Mode"
+_["ST_B_2"] = "🗑 Clean Mode"
+_["ST_B_3"] = "👥 Auth Users"
+_["ST_B_4"] = "🌐 Language"
+_["ST_B_5"] = "🔙 Back"
 
 # ===== GROUP BUTTONS =====
-GB_B_1: "👥 Group Stats"
-GB_B_2: "📊 Activity"
-GB_B_3: "🔙 Back"
+_["GB_B_1"] = "👥 Group Stats"
+_["GB_B_2"] = "📊 Activity"
+_["GB_B_3"] = "🔙 Back"
 
 # ===== DEV BUTTONS =====
-DEV_B_1: "👨‍💻 Developer"
-DEV_B_2: "📢 Channel"
-DEV_B_3: "🔙 Back"
+_["DEV_B_1"] = "👨‍💻 Developer"
+_["DEV_B_2"] = "📢 Channel"
+_["DEV_B_3"] = "🔙 Back"
 
 # ===== CALL SYSTEM =====
-call_1: "❌ Assistant is not in this group."
-call_2: "⚠️ Voice chat not found."
-call_3: "🔄 Connecting to voice chat..."
-call_4: "👤 Please add {0} to your group."
+_["call_1"] = "❌ Assistant is not in this group."
+_["call_2"] = "⚠️ Voice chat not found."
+_["call_3"] = "🔄 Connecting to voice chat..."
+_["call_4"] = "👤 Please add {0} to your group."
 
 # ===== GLOBAL BUTTONS =====
-CLOSE_BUTTON: "❌ Close"
-BACK_BUTTON: "🔙 Back"
+_["CLOSE_BUTTON"] = "❌ Close"
+_["BACK_BUTTON"] = "🔙 Back"
+
+# ======================================================= #
