@@ -49,7 +49,7 @@ ping_1: "» Pong! Bot is alive and running."
 error_1: "» An unexpected error occurred."
 error_2: "» Please try again later."
 
-# ===== START TEXTS =====
+# ===== START =====
 start_1: >
   🎵 Welcome to HEPSİ BURADA MÜZİK BOTU!
 
@@ -66,40 +66,45 @@ start_2: >
 
   Welcome to {1}
 
-  I am HEPSİ BURADA MÜZİK BOTU, a powerful music streaming bot.
+  I am HEPSİ BURADA MÜZİK BOTU.
 
-  Add me to your group and enjoy 24/7 high quality music.
+  Add me to your group and enjoy 24/7 music.
 
 # ===== HELP =====
 help_1: >
   🎧 HEPSİ BURADA MÜZİK BOTU Commands:
 
-  /play <song name> - Play a song
-  /pause - Pause playback
-  /resume - Resume playback
-  /skip - Skip current track
-  /stop - Stop music
-  /queue - Show queue
-  /ping - Check bot status
-  /help - Show this help message
+  /play <song name>
+  /pause
+  /resume
+  /skip
+  /stop
+  /queue
+  /ping
+  /help
 
 # ===== ABOUT =====
 about_1: >
   HEPSİ BURADA MÜZİK BOTU is a powerful Telegram voice chat music bot.
 
-  It supports high quality streaming from multiple platforms.
-
   Fast, stable and 24/7 online.
-
-  Developed for large groups and nonstop entertainment.
 
 # ===== INLINE BUTTONS =====
 S_B_1: "➕ Add to Group"
 S_B_2: "💬 Support"
-S_B_3: "➕ Add Me to Your Group"
+S_B_3: "➕ Add Me to Group"
 S_B_4: "⚙ Settings"
 S_B_5: "📜 Commands"
-S_B_6: "📊 Statistics"
+S_B_6: "📊 Stats"
 S_B_7: "🌐 Source"
 S_B_8: "🔙 Back"
 S_B_9: "💬 Support Chat"
+
+# ===== CALL SYSTEM =====
+call_1: "❌ Assistant is not in this group. Please add assistant first."
+call_2: "⚠️ Voice chat not found. Please start voice chat."
+call_3: "🔄 Connecting to voice chat..."
+call_4: "👤 Please add {0} to your group and try again."
+
+# ===== BUTTONS =====
+CLOSE_BUTTON: "❌ Close"
