@@ -12,10 +12,11 @@ setting_2: "» Player mode updated successfully."
 setting_3: "» Authorized users updated successfully."
 setting_4: "» Clean mode updated successfully."
 setting_5: "» Suggestion mode updated successfully."
+
 setting_6: >
   » Everyone: Any group member can control music playback.
-
   » Admin only: Only administrators can control music playback.
+
 setting_7: "» Playback type updated successfully."
 setting_8: "» Language updated successfully."
 setting_9: "» Voice chat closed successfully."
@@ -28,7 +29,6 @@ play_3: "» Now playing."
 play_4: "» Added to queue."
 play_5: "» Live stream detected."
 
-# ===== PLAYER =====
 pause_1: "» Playback paused."
 resume_1: "» Playback resumed."
 stop_1: "» Music stopped and queue cleared."
@@ -49,26 +49,26 @@ ping_1: "» Pong! Bot is alive and running."
 error_1: "» An unexpected error occurred."
 error_2: "» Please try again later."
 
-# ===== START PANEL BUTTONS =====
-S_B_1: "➕ Add to Group"
-S_B_2: "💬 Support"
-S_B_3: "➕ Add Me to Group"
-S_B_4: "⚙️ Settings"
-S_B_5: "📜 Commands"
-S_B_6: "🧑‍💻 Developer"
-S_B_7: "📦 Source Code"
-
-# ===== START MESSAGE =====
+# ===== START TEXTS =====
 start_1: >
   🎵 Welcome to HEPSİ BURADA MÜZİK BOTU!
 
-  I am a fast, stable and high quality Telegram music bot.
+  I am a fast and high quality Telegram music bot.
 
   Add me to your group and start a voice chat.
 
   Use /play to play music instantly.
 
-  Enjoy nonstop music experience with HEPSİ BURADA MÜZİK BOTU.
+  Enjoy nonstop music experience.
+
+start_2: >
+  👋 Hello {0}
+
+  Welcome to {1}
+
+  I am HEPSİ BURADA MÜZİK BOTU, a powerful music streaming bot.
+
+  Add me to your group and enjoy 24/7 high quality music.
 
 # ===== HELP =====
 help_1: >
@@ -92,3 +92,14 @@ about_1: >
   Fast, stable and 24/7 online.
 
   Developed for large groups and nonstop entertainment.
+
+# ===== INLINE BUTTONS =====
+S_B_1: "➕ Add to Group"
+S_B_2: "💬 Support"
+S_B_3: "➕ Add Me to Your Group"
+S_B_4: "⚙ Settings"
+S_B_5: "📜 Commands"
+S_B_6: "📊 Statistics"
+S_B_7: "🌐 Source"
+S_B_8: "🔙 Back"
+S_B_9: "💬 Support Chat"
