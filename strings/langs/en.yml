@@ -1,59 +1,76 @@
 name: "🇺🇸 English"
 
+# ===== GENERAL =====
 general_1: "» Please reply to a user or provide a valid username/user_id."
 general_2: "» Invalid command usage. Use /help for correct format."
 general_3: "» Bot is restarting, please wait..."
 general_4: "» Something went wrong. Try again later."
 
+# ===== SETTINGS =====
 setting_1: "» Group settings updated successfully."
 setting_2: "» Player mode updated successfully."
 setting_3: "» Authorized users updated successfully."
 setting_4: "» Clean mode updated successfully."
 setting_5: "» Suggestion mode updated successfully."
-
 setting_6: >
   » Everyone: Any group member can control music playback.
 
   » Admin only: Only administrators can control music playback.
-
 setting_7: "» Playback type updated successfully."
 setting_8: "» Language updated successfully."
 setting_9: "» Voice chat closed successfully."
 setting_10: "» Voice chat opened successfully."
 
+# ===== PLAY =====
 play_1: "» Searching for your song..."
 play_2: "» Processing your request..."
 play_3: "» Now playing."
 play_4: "» Added to queue."
 play_5: "» Live stream detected."
 
+# ===== PLAYER =====
 pause_1: "» Playback paused."
 resume_1: "» Playback resumed."
 stop_1: "» Music stopped and queue cleared."
 skip_1: "» Skipped to next track."
 
+# ===== QUEUE =====
 queue_1: "» Queue is empty."
 queue_2: "» Current Music Queue:"
 
+# ===== ADMIN =====
 admin_1: "» You must be an admin to use this command."
 admin_2: "» I need admin rights to work properly."
 
+# ===== PING =====
 ping_1: "» Pong! Bot is alive and running."
 
+# ===== ERRORS =====
 error_1: "» An unexpected error occurred."
 error_2: "» Please try again later."
 
+# ===== START PANEL BUTTONS =====
+S_B_1: "➕ Add to Group"
+S_B_2: "💬 Support"
+S_B_3: "➕ Add Me to Group"
+S_B_4: "⚙️ Settings"
+S_B_5: "📜 Commands"
+S_B_6: "🧑‍💻 Developer"
+S_B_7: "📦 Source Code"
+
+# ===== START MESSAGE =====
 start_1: >
   🎵 Welcome to HEPSİ BURADA MÜZİK BOTU!
 
-  I am a fast and high quality Telegram music bot.
+  I am a fast, stable and high quality Telegram music bot.
 
   Add me to your group and start a voice chat.
 
   Use /play to play music instantly.
 
-  Enjoy nonstop music experience.
+  Enjoy nonstop music experience with HEPSİ BURADA MÜZİK BOTU.
 
+# ===== HELP =====
 help_1: >
   🎧 HEPSİ BURADA MÜZİK BOTU Commands:
 
@@ -66,6 +83,7 @@ help_1: >
   /ping - Check bot status
   /help - Show this help message
 
+# ===== ABOUT =====
 about_1: >
   HEPSİ BURADA MÜZİK BOTU is a powerful Telegram voice chat music bot.
 
