@@ -24,15 +24,15 @@ from pyrogram.enums import ChatType, ChatMemberStatus
 LOGGER = getLogger(__name__)
 
 kickpic = [
-    "https://graph.org/file/210751796ff48991b86a3.jpg",
-    "https://graph.org/file/7b4924be4179f70abcf33.jpg",
-    "https://graph.org/file/f6d8e64246bddc26b4f66.jpg",
+    "https://telegra.ph/file/a8ba8edd60489a54f2f84.jpg",
+    "https://telegra.ph/file/a8ba8edd60489a54f2f84.jpg",
+    "https://telegra.ph/file/a8ba8edd60489a54f2f84.jpg",
 ]
 
 button = [
     [
         InlineKeyboardButton(
-            text="🍂 Ɗᴇᴠ𝘴", url="https://t.me/uchiha_owner"
+            text="🍂 Ɗᴇᴠ𝘴", url="https://t.me/kral_surucu"
         )
     ]
 ]
