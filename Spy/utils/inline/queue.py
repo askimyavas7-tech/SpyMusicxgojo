@@ -41,11 +41,11 @@ def queue_markup(
         [
             InlineKeyboardButton(
                 text="📥ᴘʀᴏᴍᴏ📥",
-                url="https://t.me/snowy_hometown"
+                url="https://t.me/yasamakbuysa"
             ),
             InlineKeyboardButton(
                 text="💗ɢʀᴏᴜᴘ ᴄʜᴀᴛ💗",
-                url="https://t.me/destiny_infinity_og"
+                url="https://t.me/yasamakbuysa"
             ),
         ],
         [
