@@ -1,28 +1,15 @@
 name: "🇺🇸 English"
 
-# ===== GENERAL =====
 general_1: "» Please reply to a user or provide a valid username/user_id."
 general_2: "» Invalid command usage. Use /help for correct format."
 general_3: "» Bot is restarting, please wait..."
 general_4: "» Something went wrong. Try again later."
 
-# ===== SETTINGS =====
-setting_1: "» Group settings updated successfully."
-setting_2: "» Player mode updated successfully."
-setting_3: "» Authorized users updated successfully."
-setting_4: "» Clean mode updated successfully."
-setting_5: "» Suggestion mode updated successfully."
+ping_1: "» Pong! Bot is alive and running."
 
-setting_6: >
-  » Everyone: Any group member can control music playback.
-  » Admin only: Only administrators can control music playback.
+admin_1: "» You must be an admin to use this command."
+admin_2: "» I need admin rights to work properly."
 
-setting_7: "» Playback type updated successfully."
-setting_8: "» Language updated successfully."
-setting_9: "» Voice chat closed successfully."
-setting_10: "» Voice chat opened successfully."
-
-# ===== PLAY =====
 play_1: "» Searching for your song..."
 play_2: "» Processing your request..."
 play_3: "» Now playing."
@@ -34,65 +21,20 @@ resume_1: "» Playback resumed."
 stop_1: "» Music stopped and queue cleared."
 skip_1: "» Skipped to next track."
 
-# ===== QUEUE =====
 queue_1: "» Queue is empty."
 queue_2: "» Current Music Queue:"
 
-# ===== ADMIN =====
-admin_1: "» You must be an admin to use this command."
-admin_2: "» I need admin rights to work properly."
+start_1: "🎵 Welcome to HEPSİ BURADA MÜZİK BOTU!"
+start_2: "👋 Hello {0}, welcome to {1}"
 
-# ===== PING =====
-ping_1: "» Pong! Bot is alive and running."
+help_1: "🎧 HEPSİ BURADA MÜZİK BOTU Commands"
 
-# ===== ERRORS =====
-error_1: "» An unexpected error occurred."
-error_2: "» Please try again later."
+about_1: "HEPSİ BURADA MÜZİK BOTU is a powerful Telegram voice chat music bot."
 
-# ===== START =====
-start_1: >
-  🎵 Welcome to HEPSİ BURADA MÜZİK BOTU!
-
-  I am a fast and high quality Telegram music bot.
-
-  Add me to your group and start a voice chat.
-
-  Use /play to play music instantly.
-
-  Enjoy nonstop music experience.
-
-start_2: >
-  👋 Hello {0}
-
-  Welcome to {1}
-
-  I am HEPSİ BURADA MÜZİK BOTU.
-
-  Add me to your group and enjoy 24/7 music.
-
-# ===== HELP =====
-help_1: >
-  🎧 HEPSİ BURADA MÜZİK BOTU Commands:
-
-  /play <song name>
-  /pause
-  /resume
-  /skip
-  /stop
-  /queue
-  /ping
-  /help
-
-# ===== ABOUT =====
-about_1: >
-  HEPSİ BURADA MÜZİK BOTU is a powerful Telegram voice chat music bot.
-
-  Fast, stable and 24/7 online.
-
-# ===== INLINE BUTTONS =====
+# ===== START BUTTONS =====
 S_B_1: "➕ Add to Group"
 S_B_2: "💬 Support"
-S_B_3: "➕ Add Me to Group"
+S_B_3: "➕ Add Me"
 S_B_4: "⚙ Settings"
 S_B_5: "📜 Commands"
 S_B_6: "📊 Stats"
@@ -100,11 +42,47 @@ S_B_7: "🌐 Source"
 S_B_8: "🔙 Back"
 S_B_9: "💬 Support Chat"
 
-# ===== CALL SYSTEM =====
-call_1: "❌ Assistant is not in this group. Please add assistant first."
-call_2: "⚠️ Voice chat not found. Please start voice chat."
-call_3: "🔄 Connecting to voice chat..."
-call_4: "👤 Please add {0} to your group and try again."
+# ===== HELP BUTTONS =====
+H_B_1: "🎵 Music"
+H_B_2: "🛠 Admin"
+H_B_3: "⚙ Settings"
+H_B_4: "📊 Stats"
+H_B_5: "👥 Group"
+H_B_6: "👤 User"
+H_B_7: "🤖 Bot"
+H_B_8: "🔙 Back"
 
-# ===== BUTTONS =====
+# ===== PLAYLIST BUTTONS =====
+PL_B_1: "⏯ Pause"
+PL_B_2: "▶ Resume"
+PL_B_3: "⏭ Skip"
+PL_B_4: "⏹ Stop"
+PL_B_5: "🔁 Loop"
+PL_B_6: "📄 Queue"
+
+# ===== SETTINGS BUTTONS =====
+ST_B_1: "🎛 Player Mode"
+ST_B_2: "🗑 Clean Mode"
+ST_B_3: "👥 Auth Users"
+ST_B_4: "🌐 Language"
+ST_B_5: "🔙 Back"
+
+# ===== GROUP BUTTONS =====
+GB_B_1: "👥 Group Stats"
+GB_B_2: "📊 Activity"
+GB_B_3: "🔙 Back"
+
+# ===== DEV BUTTONS =====
+DEV_B_1: "👨‍💻 Developer"
+DEV_B_2: "📢 Channel"
+DEV_B_3: "🔙 Back"
+
+# ===== CALL SYSTEM =====
+call_1: "❌ Assistant is not in this group."
+call_2: "⚠️ Voice chat not found."
+call_3: "🔄 Connecting to voice chat..."
+call_4: "👤 Please add {0} to your group."
+
+# ===== GLOBAL BUTTONS =====
 CLOSE_BUTTON: "❌ Close"
+BACK_BUTTON: "🔙 Back"
