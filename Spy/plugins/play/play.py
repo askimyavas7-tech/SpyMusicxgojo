@@ -573,3 +573,4 @@ async def play_music(client, CallbackQuery, _):
         details, track_id = await YouTube.track(vidid, videoid=vidid)
 
         if details
+
