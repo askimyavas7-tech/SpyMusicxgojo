@@ -5,122 +5,125 @@ from pyrogram.types import InlineKeyboardMarkup, Message
 from pytgcalls.exceptions import NoActiveGroupCall
 
 import config
-from Spy import Telegram, YouTube, app
-from Spy.core.call import Sagar
-from Spy.utils import seconds_to_min, time_to_seconds
+from Spy import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube
 from Spy.utils.decorators.play import PlayWrapper
-from Spy.utils.formatters import formats
-from Spy.utils.inline import (
-    botplaylist_markup,
-    livestream_markup,
-    playlist_markup,
-    slider_markup,
-    track_markup,
-)
-from Spy.utils.logger import play_logs
+from Spy.utils.decorators.language import languageCB
+from Spy.core.call import Sagar
 from Spy.utils.stream.stream import stream
+from Spy.utils.channelplay import get_channeplayCB
+from Spy.utils.formatters import formats, time_to_seconds
+from Spy.utils.logger import play_logs
+from Spy.utils import seconds_to_min
 
 # Türk bayrağı emojisi
 EMOJII = ["🇹🇷"]
 
-yt_api = YouTube()  # YouTube.py’den sınıfı çağırıyoruz
+# YouTubeAPI örneği
+yt_api = YouTube.YouTubeAPI()  # DÜZELTİLDİ: artık YouTubeAPI sınıfı doğru şekilde çağrılıyor
 
 @app.on_message(
-    filters.command(["play", "vplay"]) & filters.group
+    filters.command(
+        [
+            "play",
+            "vplay",
+            "cplay",
+            "cvplay",
+            "playforce",
+            "vplayforce",
+            "cplayforce",
+            "cvplayforce",
+        ]
+    )
+    & filters.group
+    & ~config.BANNED_USERS
 )
 @PlayWrapper
-async def play_commnd(client, message: Message, _, chat_id, video, channel, playmode, url, fplay):
+async def play_command(
+    client,
+    message: Message,
+    _,
+    chat_id,
+    video,
+    channel,
+    playmode,
+    url,
+    fplay,
+):
     Emoji = random.choice(EMOJII)
     mystic = await message.reply_text(_["play_2"].format(channel) if channel else Emoji)
 
-    # Eğer reply ile Telegram dosyası atılmışsa
-    if message.reply_to_message:
-        audio_telegram = message.reply_to_message.audio or message.reply_to_message.voice
-        video_telegram = message.reply_to_message.video or message.reply_to_message.document
+    # Reply ile gönderilen Telegram dosyaları
+    audio_telegram = (message.reply_to_message.audio or message.reply_to_message.voice) if message.reply_to_message else None
+    video_telegram = (message.reply_to_message.video or message.reply_to_message.document) if message.reply_to_message else None
 
-        if audio_telegram:
-            file_path = await Telegram.get_filepath(audio=audio_telegram)
-            if await Telegram.download(_, message, mystic, file_path):
-                details = {
-                    "title": await Telegram.get_filename(audio_telegram, audio=True),
-                    "link": await Telegram.get_link(message),
-                    "path": file_path,
-                    "dur": await Telegram.get_duration(audio_telegram, file_path),
-                }
-                await stream(_, mystic, message.from_user.id, details, chat_id,
-                             message.from_user.first_name, message.chat.id,
-                             streamtype="telegram", forceplay=fplay)
-                return await mystic.delete()
+    user_id = message.from_user.id
+    user_name = message.from_user.mention
 
-        elif video_telegram:
-            file_path = await Telegram.get_filepath(video=video_telegram)
-            if await Telegram.download(_, message, mystic, file_path):
-                details = {
-                    "title": await Telegram.get_filename(video_telegram),
-                    "link": await Telegram.get_link(message),
-                    "path": file_path,
-                    "dur": await Telegram.get_duration(video_telegram, file_path),
-                }
-                await stream(_, mystic, message.from_user.id, details, chat_id,
-                             message.from_user.first_name, message.chat.id,
-                             video=True, streamtype="telegram", forceplay=fplay)
-                return await mystic.delete()
+    if audio_telegram:
+        if audio_telegram.file_size > 104857600:
+            return await mystic.edit_text(_["play_5"])
+        duration_min = seconds_to_min(audio_telegram.duration)
+        if audio_telegram.duration > config.DURATION_LIMIT:
+            return await mystic.edit_text(_["play_6"].format(config.DURATION_LIMIT_MIN, app.mention))
+        file_path = await Telegram.get_filepath(audio=audio_telegram)
+        if await Telegram.download(_, message, mystic, file_path):
+            details = {
+                "title": await Telegram.get_filename(audio_telegram, audio=True),
+                "link": await Telegram.get_link(message),
+                "path": file_path,
+                "dur": await Telegram.get_duration(audio_telegram, file_path),
+            }
+            try:
+                await stream(_, mystic, user_id, details, chat_id, user_name, message.chat.id, streamtype="telegram", forceplay=fplay)
+            except Exception as e:
+                ex_type = type(e).__name__
+                err = e if ex_type == "AssistantErr" else _["general_2"].format(ex_type)
+                return await mystic.edit_text(err)
+            return await mystic.delete()
 
-    # Eğer URL verilmişse
-    if url:
+    elif video_telegram:
+        if video_telegram.file_size > config.TG_VIDEO_FILESIZE_LIMIT:
+            return await mystic.edit_text(_["play_8"])
+        file_path = await Telegram.get_filepath(video=video_telegram)
+        if await Telegram.download(_, message, mystic, file_path):
+            details = {
+                "title": await Telegram.get_filename(video_telegram),
+                "link": await Telegram.get_link(message),
+                "path": file_path,
+                "dur": await Telegram.get_duration(video_telegram, file_path),
+            }
+            try:
+                await stream(_, mystic, user_id, details, chat_id, user_name, message.chat.id, video=True, streamtype="telegram", forceplay=fplay)
+            except Exception as e:
+                ex_type = type(e).__name__
+                err = e if ex_type == "AssistantErr" else _["general_2"].format(ex_type)
+                return await mystic.edit_text(err)
+            return await mystic.delete()
+
+    elif url:
         if await yt_api.exists(url):
             if "playlist" in url:
-                # Playlist çalma
                 try:
                     details = await yt_api.playlist(url, config.PLAYLIST_FETCH_LIMIT, message.from_user.id)
+                    streamtype = "playlist"
+                    cap = _["play_9"]
+                    img = config.PLAYLIST_IMG_URL
                 except:
                     return await mystic.edit_text(_["play_3"])
-                plist_type = "yt"
-                plist_id = url.split("=")[1] if "=" in url else url
-                await mystic.edit_text("» Playlist başlatılıyor...")
-                # Playlist stream burada eklenebilir
             else:
-                # Tek şarkı
                 try:
-                    _, stream_link = await yt_api.video(url)
+                    details, track_id = await yt_api.track(url)
+                    streamtype = "youtube"
+                    cap = _["play_10"].format(details["title"], details["duration_min"])
+                    img = details["thumb"]
                 except:
                     return await mystic.edit_text(_["play_3"])
-                details = {
-                    "title": "Şarkı",
-                    "link": url,
-                    "path": stream_link
-                }
-                try:
-                    # Sagar join ve stream
-                    await Sagar.join_call(chat_id, stream_link, video=video)
-                    await stream(_, mystic, message.from_user.id, details, chat_id,
-                                 message.from_user.first_name, message.chat.id,
-                                 video=video, streamtype="youtube", forceplay=fplay)
-                except NoActiveGroupCall:
-                    return await mystic.edit_text("❌ Sesli sohbet başlatılmamış.")
-                except Exception as e:
-                    return await mystic.edit_text(f"❌ Hata: {e}")
-                await mystic.edit_text("🇹🇷 » Şarkı çalmaya başladı!")
-                return
-
-    # Eğer sadece arama yapılacaksa
-    if not url and len(message.command) > 1:
-        query = message.text.split(None, 1)[1]
-        try:
-            _, stream_link = await yt_api.video(query)
-        except:
+        else:
             return await mystic.edit_text(_["play_3"])
-        details = {"title": query, "link": query, "path": stream_link}
         try:
-            await Sagar.join_call(chat_id, stream_link, video=video)
-            await stream(_, mystic, message.from_user.id, details, chat_id,
-                         message.from_user.first_name, message.chat.id,
-                         video=video, streamtype="youtube", forceplay=fplay)
+            await stream(_, mystic, user_id, details, chat_id, user_name, message.chat.id, video=video, streamtype=streamtype, forceplay=fplay)
         except Exception as e:
-            return await mystic.edit_text(f"❌ Hata: {e}")
-        await mystic.edit_text("🇹🇷 » Şarkı çalmaya başladı!")
-        return
-
-    # Eğer hiçbir şey yoksa inline playlist göster
-    buttons = botplaylist_markup(_)
-    await mystic.edit_text(_["play_18"], reply_markup=InlineKeyboardMarkup(buttons))
+            ex_type = type(e).__name__
+            err = e if ex_type == "AssistantErr" else _["general_2"].format(ex_type)
+            return await mystic.edit_text(err)
+        return await mystic.delete()
