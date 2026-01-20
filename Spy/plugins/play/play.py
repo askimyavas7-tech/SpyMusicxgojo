@@ -1,39 +1,44 @@
+# Spy/plugins/play/play.py
+import asyncio
+import os
 from pyrogram import Client, filters
-from Spy.platforms.YouTube import YouTubeAPI
-from Spy.core.call import Call
+from pyrogram.types import Message
+from Spy.platforms.youtube import YouTubeAPI  # ✅ Küçük harfe çevrildi
+from Spy.utils.decorators.admin import admin_only  # ✅ Doğru dekoratör yolu
+from Spy.utils.database import is_on_off
+from Spy.utils.formatters import time_to_seconds
 
-yt_api = YouTubeAPI()
-
-# Basit admin kontrol fonksiyonu
-async def admin_only_check(client, message):
-    member = await client.get_chat_member(message.chat.id, message.from_user.id)
-    if not member.status in ("administrator", "creator"):
-        await message.reply_text("Bu komutu kullanmak için admin olmalısın 🇹🇷")
-        return False
-    return True
+YT = YouTubeAPI()
 
 @Client.on_message(filters.command("play") & filters.group)
-async def play(client, message):
-    if not await admin_only_check(client, message):
-        return
+@admin_only  # Sadece adminler kullanabilir
+async def play(_, message: Message):
+    # 🎵 Müziği arıyor
+    await message.reply_text("🎶 Şarkı aranıyor... 🇹🇷")
 
-    query = " ".join(message.command[1:])
-    if not query:
-        await message.reply_text("Lütfen çalmak istediğin şarkının adını yaz 🇹🇷")
-        return
+    text = message.text.split(None, 1)
+    if len(text) < 2:
+        return await message.reply_text("❌ Lütfen bir şarkı ismi veya link girin!")
 
+    query = text[1]
+
+    # Link veya arama
+    if "youtube.com" in query or "youtu.be" in query:
+        url = query
+    else:
+        search_result = await YT.details(query)
+        url = f"https://www.youtube.com/watch?v={search_result[4]}"  # video id
+
+    # Müziği indir
     try:
-        video = await yt_api.search(query)
+        file_path, success = await YT.download(url, mystic=None)
     except Exception as e:
-        await message.reply_text(f"Arama sırasında bir hata oluştu: {e} 🇹🇷")
-        return
+        return await message.reply_text(f"❌ Şarkı indirilemedi: {e}")
 
-    if not video:
-        await message.reply_text("Şarkı bulunamadı 🇹🇷")
-        return
-
-    try:
-        await Call.stream(message.chat.id, video.url)
-        await message.reply_text(f"🎵 Şimdi çalıyor 🇹🇷 **{video.title}**")
-    except Exception as e:
-        await message.reply_text(f"Şarkı çalınamadı: {e} 🇹🇷")
+    if success:
+        await message.reply_audio(
+            audio=file_path,
+            caption=f"🎵 Şarkı çalınıyor... 🇹🇷\n**{query}**"
+        )
+    else:
+        await message.reply_text("❌ Şarkı indirilemedi!")
